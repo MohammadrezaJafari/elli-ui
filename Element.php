@@ -10,6 +10,7 @@ class Element extends ViewModel{
 
     public function __construct($variables = null, $options = null)
     {
+        $variables['name'] = (!isset($variables['name']))?"":$variables['name'];
         $this->name = $variables['name'];
         parent::__construct($variables, $options);
 

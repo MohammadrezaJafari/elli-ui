@@ -1,56 +1,62 @@
 <?php
+////$this->headScript()->appendFile( '/assets/layout/js/jquery.nanoscroller/jquery.nanoscroller.js');
+//?>
+<!---->
+<!---->
+<!---->
+<?php //if(isset($title)):?>
+<!--<div class="title">-->
+<!--    <h2>--><?//=$title?><!--</h2>-->
+<!--</div>-->
+<?php //endif;?>
+<?php //if(count($services)>0):?>
+<!--    <ul class="nav nav-list tree--><?//=(!isset($notFirst))?"view":""?><!--">-->
+<!--        --><?php //foreach($services as $service):?>
+<!--            <li>-->
+<!--                --><?php //if(count($service["childList"])>0):?>
+<!--                    <label class="tree-toggler nav-header" id="--><?//=$service["id"]?><!--"><i class="fa fa-folder-o"></i> --><?//=$service["label"]?><!--</label>-->
+<!--                    --><?php //echo $this->partial('ui/form/element/tree-select', array("services"=>$service["childList"],"notFirst"=>1)); ?>
+<!--                --><?php //else:?>
+<!--                    <a class="leafeService" href="#" id="--><?//=$service["id"]?><!--">--><?//=$service["label"]?><!--</a>-->
+<!--                --><?php //endif;?>
+<!--            </li>-->
+<!--        --><?php //endforeach;?>
+<!--    </ul>-->
+<?php //endif;?>
+<!---->
+<?php //if (!isset($notFirst)):?>
+<!--<input type="text" id="parentId" name="--><?//=$name?><!--" style="display: none;" >-->
+<?php //endif;?>
+
+
+<?php
 //$this->headScript()->appendFile( '/assets/layout/js/jquery.nanoscroller/jquery.nanoscroller.js');
 ?>
+
+
+
+<?php if(isset($title)):?>
     <div class="title">
-        <h2>Tree View</h2>
+        <h2><?=$title?></h2>
     </div>
-    <ul class="nav nav-list treeview">
-        <li class=""><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> General</label>
-            <ul class="nav nav-list tree" style="display: none;">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Structure</label>
-                    <ul class="nav nav-list tree">
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Plugins</label>
-                            <ul class="nav nav-list tree">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Documentation</label>
-            <ul class="nav nav-list tree">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Components</label>
-                    <ul class="nav nav-list tree">
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Speech API</label>
-                            <ul class="nav nav-list tree">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Charts</label>
-                    <ul class="nav nav-list tree">
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Reports</label>
-                            <ul class="nav nav-list tree">
-                                <li><a href="#">Link</a></li>
-                                <li><a href="#">Link</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
+<?php endif;?>
+<?php if(count($services)>0):?>
+    <ul class="nav nav-list tree<?=(!isset($notFirst))?"view":""?>">
+        <?php foreach($services as $service):?>
+            <li  <?=(isset($selected) && $selected == $service["id"])?"class='selectedd'":""?>>
+                <?php if(count($service["childList"])>0):?>
+                    <label class="selectP tree-toggler nav-header" id="<?=$service["id"]?>"><i class="fa fa-folder-o"></i> <?=$service["label"]?></label>
+                    <?php echo $this->partial('ui/form/element/tree-select', array("services"=>$service["childList"],"notFirst"=>1)); ?>
+                <?php else:?>
+                    <a href="#" class="selectP" id="<?=$service["id"]?>"><?=$service["label"]?></a>
+                <?php endif;?>
+            </li>
+        <?php endforeach;?>
     </ul>
+<?php endif;?>
+
+<?php if (!isset($notFirst)):?>
+    <input type="text" id="parenting" name="<?=$name?>" value="<?=$selected?>" style="display: none;">
+<?php endif;?>
+
+

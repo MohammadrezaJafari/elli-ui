@@ -1,9 +1,9 @@
 <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo $label ?></label>
     <div class="col-sm-10">
-        <select  name="<?php echo $name ?>" class="form-control">
+        <select class="form-control">
             <?php foreach($options as $option => $label) :?>
-                <option <?php if($value == $option) echo 'selected' ?> value="<?php echo $option ?>"><?php echo $label ?></option>
+                <option value="<?php echo $option ?>"><?php echo $label ?></option>
             <?php endforeach; ?>
         </select>
     </div>

@@ -10,8 +10,6 @@ class Form extends Element{
     }
 
     public function render(){
-        var_dump(1);die();
-
         return parent::render();
     }
 }
