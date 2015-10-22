@@ -1,0 +1,25 @@
+<ul class="cl-vnavigation">
+
+
+
+    <?php foreach ($this->container as $page ): ?>
+        <li> <a href="<?=$page->getHref()?>"><i class="<?=$page->get("params")["icon"]?>"><span> <?=$page->get("label")?></i></span></a>
+        <?php $first=true;$hasPage=false;?>
+        <?php foreach($page as $child):?>
+            <?php if($first):?>
+                <?php $first = false;$hasPage=true;?>
+                <ul class="sub-menu">
+            <?php endif;?>
+            <li  ><a href="<?=$child->getHref()?>"><?=$child->get("label")?></a></li>
+        <?php endforeach;?>
+                    <?php if($hasPage):?>
+                        </ul>
+                    <?php endif;?>
+        </li>
+    <?php endforeach;?>
+
+
+
+
+
+</ul>
